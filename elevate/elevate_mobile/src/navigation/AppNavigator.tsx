@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function HomeStack() {
+function HomeStack() { 
   return (
     <Stack.Navigator>
       <Stack.Screen 
