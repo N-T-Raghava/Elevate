@@ -1,40 +1,31 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Card } from '../components/Card';
 
 export default function HomeScreen() {
-  const sections = [
-    {
-      title: 'Hackathons',
-      items: [
-        { title: 'Tech Innovate 2025', date: 'Oct 25-27', status: 'Upcoming' },
-        { title: 'AI Summit Hack', date: 'Nov 1-3', status: 'Registration Open' },
-      ]
-    },
-    {
-      title: 'Contests',
-      items: [
-        { title: 'Coding Challenge', date: 'Oct 20', status: 'Open' },
-        { title: 'Design Sprint', date: 'Oct 30', status: 'Coming Soon' },
-      ]
-    }
-  ];
-
   return (
     <ScrollView style={styles.container}>
-      {sections.map((section, index) => (
-        <View key={index} style={styles.section}>
-          <Text style={styles.sectionTitle}>{section.title}</Text>
-          {section.items.map((item, itemIndex) => (
-            <Card key={itemIndex} style={styles.card}>
-              <Text style={styles.itemTitle}>{item.title}</Text>
-              <Text style={styles.itemDate}>{item.date}</Text>
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>{item.status}</Text>
-              </TouchableOpacity>
-            </Card>
-          ))}
-        </View>
-      ))}
+      <View style={styles.section}>
+        <Text style={styles.welcomeTitle}>Welcome to Elevate</Text>
+        <Card style={styles.card}>
+          <Text style={styles.statsTitle}>Your Dashboard</Text>
+          <View style={styles.statsRow}>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>5</Text>
+              <Text style={styles.statLabel}>Upcoming Events</Text>
+            </View>
+            <View style={styles.statItem}>
+              <Text style={styles.statNumber}>2</Text>
+              <Text style={styles.statLabel}>Active Contests</Text>
+            </View>
+          </View>
+        </Card>
+        
+        <Text style={styles.sectionTitle}>Quick Links</Text>
+        <Card style={styles.card}>
+          <Text style={styles.cardTitle}>Latest Updates</Text>
+          <Text style={styles.cardText}>Stay tuned for upcoming hackathons and contests. Check the Events tab for more details!</Text>
+        </Card>
+      </View>
     </ScrollView>
   );
 }
@@ -47,10 +38,17 @@ const styles = StyleSheet.create({
   section: {
     padding: 16,
   },
-  sectionTitle: {
-    fontSize: 24,
+  welcomeTitle: {
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#ffffff',
+    marginBottom: 24,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginTop: 24,
     marginBottom: 16,
   },
   card: {
@@ -59,27 +57,39 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 12,
   },
-  itemTitle: {
+  statsTitle: {
     fontSize: 18,
+    fontWeight: '600',
+    color: '#ffffff',
+    marginBottom: 16,
+  },
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 8,
+  },
+  statItem: {
+    alignItems: 'center',
+  },
+  statNumber: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#007AFF',
+    marginBottom: 4,
+  },
+  statLabel: {
+    fontSize: 14,
+    color: '#888888',
+  },
+  cardTitle: {
+    fontSize: 16,
     fontWeight: '600',
     color: '#ffffff',
     marginBottom: 8,
   },
-  itemDate: {
+  cardText: {
     fontSize: 14,
     color: '#888888',
-    marginBottom: 12,
-  },
-  button: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-    alignSelf: 'flex-start',
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 14,
-    fontWeight: '500',
+    lineHeight: 20,
   },
 });

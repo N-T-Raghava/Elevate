@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import ChatbotScreen from '../screens/ChatbotScreen';
+import HackathonsContestsScreen from '../screens/HackathonsContestsScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -11,7 +12,7 @@ function HomeStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen 
-        name="Home" 
+        name="Elevate" 
         component={HomeScreen}
         options={{
           headerStyle: {
@@ -36,6 +37,8 @@ export default function AppNavigator() {
 
           if (route.name === 'HomeTab') {
             iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Events') {
+            iconName = focused ? 'trophy' : 'trophy-outline';
           } else {
             iconName = focused ? 'chatbubble' : 'chatbubble-outline';
           }
@@ -56,6 +59,20 @@ export default function AppNavigator() {
         options={{ 
           headerShown: false,
           title: 'Home'
+        }}
+      />
+      <Tab.Screen 
+        name="Events" 
+        component={HackathonsContestsScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: '#1a1a1a',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          title: 'Events'
         }}
       />
       <Tab.Screen 
