@@ -49,70 +49,77 @@ export default function ChatbotScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
-        {/* Sidebar Toggle Button */}
-        <TouchableOpacity 
-          style={styles.toggleButton}
-          onPress={() => setIsSidebarOpen(!isSidebarOpen)}
-        >
-          <Icon 
-            name={isSidebarOpen ? "menu-open" : "menu"} 
-            size={24} 
-            color="#ffffff" 
-          />
-        </TouchableOpacity>
+      {/* Sidebar Toggle Button */}
+      <TouchableOpacity 
+        style={styles.toggleButton}
+        onPress={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        <Icon 
+          name={isSidebarOpen ? "menu-open" : "menu"} 
+          size={24} 
+          color="#ffffff" 
+        />
+      </TouchableOpacity>
 
-        {/* Animated Sidebar */}
-        {isSidebarOpen && (
-          <View style={styles.sidebar}>
+      {/* Animated Sidebar */}
+      {isSidebarOpen && (
+        <View style={styles.sidebar}>
+          <View style={styles.sidebarHeader}>
             <Text style={styles.sidebarTitle}>Chat History</Text>
-            <ScrollView style={styles.historyList}>
-              {sessions.map((session) => (
-                <TouchableOpacity 
-                  key={session.id} 
-                  style={styles.historyItem}
-                  onPress={() => loadChatSession(session.id)}
-                >
-                  <Text style={styles.historyTitle}>{session.title}</Text>
-                  <Text style={styles.historyDate}>
-                    {session.timestamp.toLocaleDateString()}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
           </View>
-        )}
-        
-        <View style={styles.mainContent}>
-          <ScrollView style={styles.chatContainer}>
-            {chatHistory.map((chat, index) => (
-              <View 
-                key={index} 
-                style={[
-                  styles.messageContainer,
-                  chat.type === 'user' ? styles.userMessage : styles.botMessage
-                ]}
+          <ScrollView style={styles.historyList}>
+            {sessions.map((session) => (
+              <TouchableOpacity 
+                key={session.id} 
+                style={styles.historyItem}
+                onPress={() => loadChatSession(session.id)}
               >
-                <Card style={styles.messageCard}>
-                  <Text style={styles.messageText}>{chat.text}</Text>
-                </Card>
-              </View>
+                <Text style={styles.historyTitle}>{session.title}</Text>
+                <Text style={styles.historyDate}>
+                  {session.timestamp.toLocaleDateString()}
+                </Text>
+              </TouchableOpacity>
             ))}
           </ScrollView>
-          
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              value={message}
-              onChangeText={setMessage}
-              placeholder="Type your message..."
-              placeholderTextColor="#666666"
-              onSubmitEditing={sendMessage}
-            />
-            <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-              <Text style={styles.sendButtonText}>Send</Text>
-            </TouchableOpacity>
-          </View>
+        </View>
+      )}
+        
+      {/* Main Chat Area */}
+      <View style={[
+        styles.mainContent,
+        isSidebarOpen && styles.mainContentShifted
+      ]}>
+        <ScrollView 
+          style={styles.chatContainer}
+          contentContainerStyle={styles.chatContentContainer}
+        >
+          {chatHistory.map((chat, index) => (
+            <View 
+              key={index} 
+              style={[
+                styles.messageContainer,
+                chat.type === 'user' ? styles.userMessage : styles.botMessage
+              ]}
+            >
+              <Card style={styles.messageCard}>
+                <Text style={styles.messageText}>{chat.text}</Text>
+              </Card>
+            </View>
+          ))}
+        </ScrollView>
+        
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            value={message}
+            onChangeText={setMessage}
+            placeholder="Type your message..."
+            placeholderTextColor="#666666"
+            onSubmitEditing={sendMessage}
+          />
+          <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+            <Text style={styles.sendButtonText}>Send</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -124,37 +131,47 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0a0a0a',
   },
-  content: {
-    flex: 1,
-    flexDirection: 'row',
-  },
   toggleButton: {
     position: 'absolute',
     top: 10,
     left: 10,
-    zIndex: 1,
+    zIndex: 2,
     padding: 8,
     borderRadius: 20,
     backgroundColor: '#1a1a1a',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
   sidebar: {
     position: 'absolute',
     left: 0,
     top: 0,
     bottom: 0,
-    width: 250,
+    width: 280,
     backgroundColor: '#1a1a1a',
     borderRightWidth: 1,
     borderRightColor: '#2a2a2a',
-    zIndex: 0,
+    zIndex: 1,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
-  sidebarTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    padding: 16,
+  sidebarHeader: {
+    paddingTop: 40,
+    paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#2a2a2a',
+  },
+  sidebarTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    paddingHorizontal: 16,
   },
   historyList: {
     flex: 1,
@@ -178,6 +195,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 50, // Space for the toggle button
   },
+  mainContentShifted: {
+    marginLeft: 280, // Width of the sidebar
+  },
+  chatContentContainer: {
+    padding: 16,
+    paddingTop: 60, // Space for toggle button
+  },
   chatContainer: {
     flex: 1,
     padding: 16,
@@ -195,6 +219,12 @@ const styles = StyleSheet.create({
     maxWidth: '80%',
     backgroundColor: '#1a1a1a',
     padding: 12,
+    borderRadius: 12,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
   },
   messageText: {
     color: '#ffffff',
