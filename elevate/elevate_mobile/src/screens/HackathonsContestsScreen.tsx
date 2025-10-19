@@ -1,23 +1,27 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Card } from '../components/Card';
+import { getContests, getHackathons, Event } from '../data/eventsData';
+import { useEffect, useState } from 'react';
+
+interface Section {
+  title: string;
+  items: Event[];
+}
 
 export default function HackathonsContestsScreen() {
-  const sections = [
-    {
-      title: 'Hackathons',
-      items: [
-        { title: 'Tech Innovate 2025', date: 'Oct 25-27', status: 'Upcoming' },
-        { title: 'AI Summit Hack', date: 'Nov 1-3', status: 'Registration Open' },
-      ]
-    },
-    {
-      title: 'Contests',
-      items: [
-        { title: 'Coding Challenge', date: 'Oct 20', status: 'Open' },
-        { title: 'Design Sprint', date: 'Oct 30', status: 'Coming Soon' },
-      ]
-    }
-  ];
+  const [sections, setSections] = useState<Section[]>([
+    { title: 'Contests', items: [] },
+    { title: 'Hackathons', items: [] }
+  ]);
+
+  useEffect(() => {
+    const contests = getContests();
+    const hackathons = getHackathons();
+    setSections([
+      { title: 'Contests', items: contests },
+      { title: 'Hackathons', items: hackathons }
+    ]);
+  }, []);
 
   return (
     <ScrollView style={styles.container}>

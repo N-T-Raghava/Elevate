@@ -1,0 +1,212 @@
+[
+    {
+        "platform": "Codeforces",
+        "code": "2165",
+        "name": "Codeforces Round (Div. 1)",
+        "status": "Upcoming",
+        "start": "2025-11-16 20:05:00",
+        "end": "2025-11-16 22:05:00",
+        "duration": "2h 0m",
+        "link": "https://codeforces.com/contest/2165"
+    },
+    {
+        "platform": "Codeforces",
+        "code": "2166",
+        "name": "Codeforces Round (Div. 2)",
+        "status": "Upcoming",
+        "start": "2025-11-16 20:05:00",
+        "end": "2025-11-16 22:05:00",
+        "duration": "2h 0m",
+        "link": "https://codeforces.com/contest/2166"
+    },
+    {
+        "platform": "Codeforces",
+        "code": "2164",
+        "name": "Codeforces Global Round 30 (Div. 1 + Div. 2)",
+        "status": "Upcoming",
+        "start": "2025-11-06 20:05:00",
+        "end": "2025-11-06 23:05:00",
+        "duration": "3h 0m",
+        "link": "https://codeforces.com/contest/2164"
+    },
+    {
+        "platform": "Codeforces",
+        "code": "2161",
+        "name": "Codeforces Round (Div. 1 + Div. 2)",
+        "status": "Upcoming",
+        "start": "2025-10-30 20:05:00",
+        "end": "2025-10-30 22:05:00",
+        "duration": "2h 0m",
+        "link": "https://codeforces.com/contest/2161"
+    },
+    {
+        "platform": "Codeforces",
+        "code": "2167",
+        "name": "Codeforces Round (Div. 4)",
+        "status": "Upcoming",
+        "start": "2025-10-28 20:05:00",
+        "end": "2025-10-28 22:20:00",
+        "duration": "2h 15m",
+        "link": "https://codeforces.com/contest/2167"
+    },
+    {
+        "platform": "Codeforces",
+        "code": "2156",
+        "name": "Codeforces Round 1061 (Div. 2)",
+        "status": "Upcoming",
+        "start": "2025-10-24 20:05:00",
+        "end": "2025-10-24 22:05:00",
+        "duration": "2h 0m",
+        "link": "https://codeforces.com/contest/2156"
+    },
+    {
+        "platform": "Codeforces",
+        "code": "2154",
+        "name": "Codeforces Round 1060 (Div. 2)",
+        "status": "Upcoming",
+        "start": "2025-10-19 20:05:00",
+        "end": "2025-10-19 22:05:00",
+        "duration": "2h 0m",
+        "link": "https://codeforces.com/contest/2154"
+    },
+    {
+        "platform": "CodeChef",
+        "code": "DSAMONDAY08",
+        "name": "Monday Munch - DSA Challenge 08",
+        "status": "Upcoming",
+        "start": "20 Oct 2025  18:00:31",
+        "end": "20 Oct 2025  21:00:31",
+        "duration": "3h 0m",
+        "link": "https://www.codechef.com/DSAMONDAY08"
+    },
+    {
+        "platform": "CodeChef",
+        "code": "START209",
+        "name": "Starters 209",
+        "status": "Upcoming",
+        "start": "22 Oct 2025  20:00:00",
+        "end": "22 Oct 2025  22:00:00",
+        "duration": "2h 0m",
+        "link": "https://www.codechef.com/START209"
+    },
+    {
+        "platform": "CodeChef",
+        "code": "START210",
+        "name": "Starters 210",
+        "status": "Upcoming",
+        "start": "29 Oct 2025  20:00:00",
+        "end": "29 Oct 2025  22:00:00",
+        "duration": "2h 0m",
+        "link": "https://www.codechef.com/START210"
+    },
+    {
+        "platform": "CodeChef",
+        "code": "START211",
+        "name": "Starters 211",
+        "status": "Upcoming",
+        "start": "05 Nov 2025  20:00:00",
+        "end": "05 Nov 2025  22:00:00",
+        "duration": "2h 0m",
+        "link": "https://www.codechef.com/START211"
+    },
+    {
+        "platform": "CodeChef",
+        "code": "DEVWEEKEND20",
+        "name": "Weekend Dev Challenge 20: Full Stack Projects using MERN",
+        "status": "Ongoing",
+        "start": "18 Oct 2025  00:00:00",
+        "end": "20 Oct 2025  00:00:00",
+        "duration": "48h 0m",
+        "link": null
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "AtCoder Beginner Contest 428",
+        "status": "Upcoming",
+        "start": "2025-10-18 17:30:00",
+        "end": "2025-10-18 19:10:00",
+        "duration": "1h 40m",
+        "link": "https://atcoder.jp/contests/abc428"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "RECRUIT Nihonbashi Half Marathon 2025 Autumn （AtCoder Heuristic Contest 055）",
+        "status": "Upcoming",
+        "start": "2025-10-19 15:30:00",
+        "end": "2025-10-19 19:30:00",
+        "duration": "4h 0m",
+        "link": "https://atcoder.jp/contests/ahc055"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "Polaris.AI Programming Contest 2025（AtCoder Beginner Contest 429）",
+        "status": "Upcoming",
+        "start": "2025-10-25 17:30:00",
+        "end": "2025-10-25 19:10:00",
+        "duration": "1h 40m",
+        "link": "https://atcoder.jp/contests/abc429"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "AtCoder Grand Contest 074",
+        "status": "Upcoming",
+        "start": "2025-10-26 17:30:00",
+        "end": "2025-10-26 20:30:00",
+        "duration": "3h 0m",
+        "link": "https://atcoder.jp/contests/agc074"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "AtCoder Beginner Contest 430",
+        "status": "Upcoming",
+        "start": "2025-11-01 17:30:00",
+        "end": "2025-11-01 19:10:00",
+        "duration": "1h 40m",
+        "link": "https://atcoder.jp/contests/abc430"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "FPS 24: 24 Problems on Formal Power Series",
+        "status": "Upcoming",
+        "start": "2025-11-03 09:30:00",
+        "end": "2025-11-03 14:30:00",
+        "duration": "5h 0m",
+        "link": "https://atcoder.jp/contests/fps-24"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "HACK TO THE FUTURE 2026 （AtCoder Heuristic Contest 056）",
+        "status": "Upcoming",
+        "start": "2025-11-07 15:30:00",
+        "end": "2025-11-17 15:30:00",
+        "duration": "240h 0m",
+        "link": "https://atcoder.jp/contests/ahc056"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "TOYOTA SYSTEMS Programming Contest 2025（AtCoder Beginner Contest 431)",
+        "status": "Upcoming",
+        "start": "2025-11-08 17:30:00",
+        "end": "2025-11-08 19:10:00",
+        "duration": "1h 40m",
+        "link": "https://atcoder.jp/contests/abc431"
+    },
+    {
+        "platform": "AtCoder",
+        "code": null,
+        "name": "AtCoder Regular Contest 210",
+        "status": "Upcoming",
+        "start": "2025-11-16 17:30:00",
+        "end": "2025-11-16 19:30:00",
+        "duration": "2h 0m",
+        "link": "https://atcoder.jp/contests/arc210"
+    }
+]

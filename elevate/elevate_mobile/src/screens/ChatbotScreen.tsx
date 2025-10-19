@@ -1,11 +1,28 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { Card } from '../components/Card';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+interface ChatSession {
+  id: string;
+  title: string;
+  timestamp: Date;
+}
+
+interface ChatMessage {
+  type: 'user' | 'bot';
+  text: string;
+}
 
 export default function ChatbotScreen() {
   const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([
     { type: 'bot', text: 'Hello! How can I help you today?' }
+  ]);
+  const [sessions, setSessions] = useState<ChatSession[]>([
+    { id: '1', title: 'Previous Chat 1', timestamp: new Date('2025-10-18') },
+    { id: '2', title: 'Previous Chat 2', timestamp: new Date('2025-10-17') },
   ]);
 
   const sendMessage = () => {
@@ -25,35 +42,78 @@ export default function ChatbotScreen() {
     setMessage('');
   };
 
+  const loadChatSession = (sessionId: string) => {
+    // TODO: Implement loading previous chat sessions
+    console.log('Loading chat session:', sessionId);
+  };
+
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.chatContainer}>
-        {chatHistory.map((chat, index) => (
-          <View 
-            key={index} 
-            style={[
-              styles.messageContainer,
-              chat.type === 'user' ? styles.userMessage : styles.botMessage
-            ]}
-          >
-            <Card style={styles.messageCard}>
-              <Text style={styles.messageText}>{chat.text}</Text>
-            </Card>
-          </View>
-        ))}
-      </ScrollView>
-      
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={message}
-          onChangeText={setMessage}
-          placeholder="Type your message..."
-          placeholderTextColor="#666666"
-        />
-        <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
-          <Text style={styles.sendButtonText}>Send</Text>
+      <View style={styles.content}>
+        {/* Sidebar Toggle Button */}
+        <TouchableOpacity 
+          style={styles.toggleButton}
+          onPress={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          <Icon 
+            name={isSidebarOpen ? "menu-open" : "menu"} 
+            size={24} 
+            color="#ffffff" 
+          />
         </TouchableOpacity>
+
+        {/* Animated Sidebar */}
+        {isSidebarOpen && (
+          <View style={styles.sidebar}>
+            <Text style={styles.sidebarTitle}>Chat History</Text>
+            <ScrollView style={styles.historyList}>
+              {sessions.map((session) => (
+                <TouchableOpacity 
+                  key={session.id} 
+                  style={styles.historyItem}
+                  onPress={() => loadChatSession(session.id)}
+                >
+                  <Text style={styles.historyTitle}>{session.title}</Text>
+                  <Text style={styles.historyDate}>
+                    {session.timestamp.toLocaleDateString()}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
+        
+        <View style={styles.mainContent}>
+          <ScrollView style={styles.chatContainer}>
+            {chatHistory.map((chat, index) => (
+              <View 
+                key={index} 
+                style={[
+                  styles.messageContainer,
+                  chat.type === 'user' ? styles.userMessage : styles.botMessage
+                ]}
+              >
+                <Card style={styles.messageCard}>
+                  <Text style={styles.messageText}>{chat.text}</Text>
+                </Card>
+              </View>
+            ))}
+          </ScrollView>
+          
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              value={message}
+              onChangeText={setMessage}
+              placeholder="Type your message..."
+              placeholderTextColor="#666666"
+              onSubmitEditing={sendMessage}
+            />
+            <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+              <Text style={styles.sendButtonText}>Send</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -63,6 +123,60 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#0a0a0a',
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  toggleButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
+    padding: 8,
+    borderRadius: 20,
+    backgroundColor: '#1a1a1a',
+  },
+  sidebar: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: 250,
+    backgroundColor: '#1a1a1a',
+    borderRightWidth: 1,
+    borderRightColor: '#2a2a2a',
+    zIndex: 0,
+  },
+  sidebarTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#2a2a2a',
+  },
+  historyList: {
+    flex: 1,
+  },
+  historyItem: {
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#2a2a2a',
+  },
+  historyTitle: {
+    fontSize: 14,
+    color: '#ffffff',
+    marginBottom: 4,
+  },
+  historyDate: {
+    fontSize: 12,
+    color: '#666666',
+  },
+  mainContent: {
+    flex: 1,
+    flexDirection: 'column',
+    marginLeft: 50, // Space for the toggle button
   },
   chatContainer: {
     flex: 1,
@@ -90,6 +204,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 16,
     backgroundColor: '#1a1a1a',
+    borderTopWidth: 1,
+    borderTopColor: '#2a2a2a',
   },
   input: {
     flex: 1,
@@ -103,13 +219,13 @@ const styles = StyleSheet.create({
   sendButton: {
     backgroundColor: '#007AFF',
     borderRadius: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     paddingVertical: 8,
     justifyContent: 'center',
   },
   sendButtonText: {
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: '600',
   },
 });
